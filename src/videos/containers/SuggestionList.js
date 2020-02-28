@@ -1,6 +1,9 @@
 import React from 'react';
 import {Text, FlatList} from 'react-native';
 import SuggestionListLayout from '../components/SuggestionListLayout';
+import Empty from '../components/Empty';
+import Separator from '../components/Separator';
+import Suggestion from '../components/Suggestion';
 
 const SuggestionList = () => {
   const list = [
@@ -18,11 +21,17 @@ const SuggestionList = () => {
     },
   ];
 
+  const emptyList = () => <Empty text="No hay sugerencias" />;
+  const itemSeparator = () => <Separator />;
+  const renderItem = ({item}) => <Suggestion {...item} />;
+
   return (
     <SuggestionListLayout title="Recomendado para ti">
       <FlatList
         data={list}
-        renderItem={({item}) => <Text>{item.title}</Text>}
+        renderItem={renderItem}
+        ListEmptyComponent={emptyList}
+        ItemSeparatorComponent={itemSeparator}
       />
     </SuggestionListLayout>
   );
