@@ -7,11 +7,7 @@ const Separator = props => {
     return {borderTopColor: color ? color : '#eaeaea'};
   };
 
-  return (
-    <View style={[styles.separator, defineBorder()]}>
-      <Text>...</Text>
-    </View>
-  );
+  return <View style={[styles.separator, defineBorder()]} />;
 };
 
 const styles = StyleSheet.create({
