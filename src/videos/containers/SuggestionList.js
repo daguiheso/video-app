@@ -5,31 +5,18 @@ import Empty from '../components/Empty';
 import Separator from '../components/Separator';
 import Suggestion from '../components/Suggestion';
 
-const SuggestionList = () => {
-  const list = [
-    {
-      title: 'Leo',
-      key: '1',
-    },
-    {
-      title: 'Daniel',
-      key: '2',
-    },
-    {
-      title: 'David',
-      key: '3',
-    },
-  ];
-
+const SuggestionList = props => {
   const emptyList = () => <Empty text="No hay sugerencias" />;
   const itemSeparator = () => <Separator />;
   const renderItem = ({item}) => <Suggestion {...item} />;
+  const keyExtractor = item => item.id.toString();
 
   return (
     <SuggestionListLayout title="Recomendado para ti">
       <FlatList
-        data={list}
+        data={props.list}
         renderItem={renderItem}
+        keyExtractor={keyExtractor}
         ListEmptyComponent={emptyList}
         ItemSeparatorComponent={itemSeparator}
       />
