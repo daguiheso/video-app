@@ -7,7 +7,7 @@ import CategoryListLayout from '../components/CategoryListLayout';
 
 const CategoryList = props => {
   const emptyList = () => <Empty text="No hay sugerencias" />;
-  const itemSeparator = () => <Separator />;
+  const itemSeparator = () => <Separator isVertical />;
   const renderItem = ({item}) => <Suggestion {...item} />;
   const keyExtractor = item => item.id.toString();
 
