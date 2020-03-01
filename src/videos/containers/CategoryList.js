@@ -2,13 +2,13 @@ import React from 'react';
 import {FlatList} from 'react-native';
 import Empty from '../components/Empty';
 import Separator from '../components/Separator';
-import Suggestion from '../components/Suggestion';
 import CategoryListLayout from '../components/CategoryListLayout';
+import Category from '../components/Category';
 
 const CategoryList = props => {
   const emptyList = () => <Empty text="No hay sugerencias" />;
   const itemSeparator = () => <Separator isVertical />;
-  const renderItem = ({item}) => <Suggestion {...item} />;
+  const renderItem = ({item}) => <Category {...item} />;
   const keyExtractor = item => item.id.toString();
 
   return (
