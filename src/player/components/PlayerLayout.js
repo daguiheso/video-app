@@ -6,6 +6,7 @@ const PlayerLayout = props => {
     <View style={styles.container}>
       <View style={styles.video}>{props.video}</View>
       <View style={styles.overlay}>{props.isLoading && props.loader}</View>
+      {props.controls}
     </View>
   );
 };
