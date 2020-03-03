@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
+import {connect} from 'react-redux';
 import SuggestionListLayout from '../components/SuggestionListLayout';
 import Empty from '../components/Empty';
 import Separator from '../components/Separator';
@@ -24,4 +25,10 @@ const SuggestionList = props => {
   );
 };
 
-export default SuggestionList;
+const mapStateToProps = state => {
+  return {
+    list: state.suggestionList,
+  };
+};
+
+export default connect(mapStateToProps)(SuggestionList);
