@@ -5,8 +5,8 @@ import Home from './screens/containers/Home';
 import Header from './sections/components/Header';
 import CategoryList from './videos/containers/CategoryList';
 import SuggestionList from './videos/containers/SuggestionList';
-import Player from './player/containers/Player';
 import API from '../utils/api';
+import Movie from './screens/containers/Movie';
 
 const AppLayout = props => {
   useEffect(() => {
@@ -30,10 +30,10 @@ const AppLayout = props => {
     });
   };
 
+  if (props.selectedMovie) return <Movie />;
   return (
     <Home>
       <Header />
-      <Player />
       <Text>Buscador</Text>
       <Text>Sugerencias</Text>
       <CategoryList />
@@ -42,4 +42,10 @@ const AppLayout = props => {
   );
 };
 
-export default connect(null)(AppLayout);
+const mapStateToProps = state => {
+  return {
+    selectedMovie: state.selectedMovie,
+  };
+};
+
+export default connect(mapStateToProps)(AppLayout);
