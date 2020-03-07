@@ -1,15 +1,27 @@
 import React, {useState} from 'react';
 import {TextInput, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
+import API from '../../../utils/api';
 
-const Search = () => {
+const Search = props => {
   const [text, setText] = useState('');
 
-  const handleSubmit = () => {
-    console.log(text);
+  const handleSubmit = async () => {
+    const movieSearchResult = await API.searchMovie(text);
+    props.dispatch({
+      type: 'SET_MOVIE_SEARCH_RESULT',
+      payload: {movieSearchResult},
+    });
   };
 
   const handleChangeText = textInput => {
     setText(textInput);
+    if (textInput === '') {
+      props.dispatch({
+        type: 'SET_MOVIE_SEARCH_RESULT',
+        payload: {movieSearchResult: null},
+      });
+    }
   };
 
   return (
@@ -21,6 +33,7 @@ const Search = () => {
       onSubmitEditing={handleSubmit}
       onChangeText={handleChangeText}
       style={styles.input}
+      clearButtonMode="always"
     />
   );
 };
@@ -34,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Search;
+export default connect(null)(Search);

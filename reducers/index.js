@@ -9,6 +9,9 @@ const reducer = (state = {}, action) => {
     case 'SET_SELECTED_MOVIE': {
       return {...state, selectedMovie: action.payload.movie};
     }
+    case 'SET_MOVIE_SEARCH_RESULT': {
+      return {...state, ...action.payload};
+    }
     default:
       return state;
   }
