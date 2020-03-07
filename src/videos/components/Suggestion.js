@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 const Suggestion = props => {
-  const {title, year, rating, medium_cover_image, genres} = props;
+  const {title, year, rating, medium_cover_image, genres, onPress} = props;
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <View style={styles.left}>
         <Image style={styles.cover} source={{uri: medium_cover_image}} />
         <View style={styles.genre}>
@@ -16,7 +16,7 @@ const Suggestion = props => {
         <Text style={styles.year}>{year}</Text>
         <Text style={styles.rating}>{rating} Estrellas</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
