@@ -7,6 +7,7 @@ import CategoryList from './videos/containers/CategoryList';
 import SuggestionList from './videos/containers/SuggestionList';
 import API from '../utils/api';
 import Movie from './screens/containers/Movie';
+import Search from './sections/containers/Search';
 
 const AppLayout = props => {
   useEffect(() => {
@@ -34,8 +35,7 @@ const AppLayout = props => {
   return (
     <Home>
       <Header />
-      <Text>Buscador</Text>
-      <Text>Sugerencias</Text>
+      <Search />
       <CategoryList />
       <SuggestionList />
     </Home>
